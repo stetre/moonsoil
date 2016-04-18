@@ -1,0 +1,94 @@
+
+== Functions
+
+* *soil.last_result* () +
+-> _string_
+
+* *soil.channels* (<<channels,_channels_>>) +
+-> _n_ +
+[small]#Returns the number of channels corresponding to the given _channels_ string.#
+
+* *soil.load_image* (_filename_, <<forcechannels,_forcechannels_>>) +
+-> <<data, _data_>>, _width_, _height_, <<channels,_channels_>>
+
+* *soil.load_image_from_memory* (<<buffer,_buffer_>>, <<forcechannels,_forcechannels_>>) +
+-> <<data, _data_>>, _width_, _height_, <<channels,_channels_>>
+
+* *soil.save_image* (_filename_, <<imagetype,_imagetype_>>, _width_, _height_, <<channels,_channels_>>, <<flags,_flags_>>) +
+-> _boolean_, _errmsg_
+
+* *soil.save_screenshot* (_filename_, <<imagetype,_imagetype_>>, _x_, _y_, _width_, _height_) +
+-> _boolean_, _errmsg_
+
+
+NOTE: The following functions require OpenGL to be initialized.
+In order to do this from Lua you can use a windowing library such as
+https://github.com/stetre/moonglfw[MoonGLFW] to create a GL context, and
+https://github.com/stetre/moongl[MoonGL] to initialize it
+(see the examples for more details).
+
+* *soil.load_texture* (_filename_, <<forcechannels,_forcechannels_>>, <<texid, _texid_>>, <<flags,_flags_>>) +
+-> _texid_
+
+* *soil.load_cubemap* (_xposfilename_, _xnegfilename_, _yposfilename_, _ynegfilename_, _zposfilename_, _znegfilename_, <<forcechannels,_forcechannels_>>, <<texid, _texid_>>, <<flags,_flags_>>) +
+-> _texid_
+
+* *soil.load_single_cubemap* (_filename_, <<faceorder,_faceorder_>>, <<forcechannels,_forcechannels_>>, <<texid, _texid_>>, <<flags,_flags_>>) +
+-> _texid_
+
+* *soil.load_hdr_texture* (_filename_, <<fakehdr, _fakehdr_>>, <<rescaletomax, _rescaletomax_>>, <<texid, _texid_>>, <<flags,_flags_>>) +
+-> _texid_
+
+* *soil.load_texture_from_memory* (<<buffer,_buffer_>>, <<forcechannels,_forcechannels_>>, <<texid, _texid_>>, <<flags,_flags_>>) +
+-> _texid_
+
+* *soil.load_cubemap_from_memory* (<<buffer,_xposbuffer_>>, <<buffer,_xnegbuffer_>>, <<buffer,_yposbuffer_>>, <<buffer,_ynegbuffer_>>, <<buffer,_zposbuffer_>>, <<buffer,_znegbuffer_>>, <<forcechannels,_forcechannels_>>, <<texid, _texid_>>, <<flags,_flags_>>) +
+-> _texid_
+
+* *soil.load_single_cubemap_from_memory* (<<buffer,_buffer_>>, <<faceorder,_faceorder_>>, <<forcechannels,_forcechannels_>>, <<texid, _texid_>>, <<flags,_flags_>>) +
+-> _texid_
+
+* *soil.create_texture* (<<data, _data_>>, _width_, _height_, <<channels,_channels_>>, <<texid, _texid_>>, <<flags,_flags_>>) +
+-> _texid_
+
+* *soil.create_single_cubemap* (<<data, _data_>>, _width_, _height_, <<channels,_channels_>>, <<faceorder,_faceorder_>>, <<texid, _texid_>>, <<flags,_flags_>>) +
+-> _texid_
+
+
+== Arguments
+
+[[buffer]]
+* *buffer*, *pass:[*]posbuffer*, *pass:[*]negbuffer*: binary string.
+
+[[channels]]
+* *channels*: '_luminous_', '_luminous/alpha_', '_rgb_', '_rgba_'.
+
+[[data]]
+* *data*: binary string.
+
+[[faceorder]]
+* *faceorder*: a permutation of the string 'ESWNUD' (East, South, West, North, Up, Down).
+
+[[fakehdr]]
+* *fakehdr*: '_rgbe_', '_rgbdiva_', '_rgbdiva2_'.
+
+[[flags]]
+* *flags*: a bitfield. May be passed either as an integer code obtained by combining 
+soil.FLAG_XXX values (corresponding to SOIL_FLAG_XXX defines) or as a sequence of strings
+from the set listed below. +
+[small]#String values: '_power of two_', '_mipmaps_', '_texture repeats_', '_multiply alpha_', '_invert y_', '_compress to dxt_', '_dds load direct_', '_ntsc safe rgb_', '_ycocg_', '_texture rectangle_'.#
+
+[[forcechannels]]
+* *forcechannels*: '_auto_', or one of <<channels, _channels_>>.
+
+[[imagetype]]
+* *imagetype*: '_tga_', '_bmp_', '_dds_'.
+
+[[rescaletomax]]
+* *rescaletomax*: boolean.
+
+[[texid]]
+* *texid* id of OpenGL texture to reuse (=0 or _nil_ to create a new texture).
+
+
+
