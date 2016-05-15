@@ -34,7 +34,7 @@
 #include <lualib.h>
 #include <lauxlib.h>
 
-#define MOONSOIL_VERSION        "0.1"
+#define MOONSOIL_VERSION        "0.2"
 
 #endif /* moonsoilDEFINED */
 
