@@ -79,9 +79,20 @@ Other examples can be found in the **examples/** directory.
 
 #### See also
 
-* [MoonAssimp](https://github.com/stetre/moonassimp)
-* [MoonGL](https://github.com/stetre/moongl)
-* [MoonGLFW](https://github.com/stetre/moonglfw)
-* [MoonGLUT](https://github.com/stetre/moonglut)
-* [MoonFLTK](https://github.com/stetre/moonfltk)
+* Windowing and GUI:
+[MoonFLTK](https://github.com/stetre/moonfltk),
+[MoonGLFW](https://github.com/stetre/moonglfw),
+[MoonGLUT](https://github.com/stetre/moonglut).
+
+* Rendering:
+[MoonGL](https://github.com/stetre/moongl).
+
+* Math:
+[MoonGLMATH](https://github.com/stetre/moonglmath).
+
+* Image and model loading:
+[MoonAssimp](https://github.com/stetre/moonassimp).
+
+* Audio:
+[LuaJACK](https://github.com/stetre/luajack).
 
