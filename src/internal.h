@@ -34,7 +34,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include "moonsoil.h"
-#include <SOIL/SOIL.h>
+//#include <SOIL/SOIL.h>
+#include "SOIL.h"
 
 #define TOSTR_(x) #x
 #define TOSTR(x) TOSTR_(x)

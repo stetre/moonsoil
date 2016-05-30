@@ -4,8 +4,10 @@ MoonSOIL is a Lua binding library for
 the 
 [Simple OpenGL Image Library (SOIL)](http://www.lonesock.net/soil.html).
 
-It runs on GNU/Linux and requires 
-[Lua](http://www.lua.org/) (>=5.3) and [SOIL](http://www.lonesock.net/soil.html).
+It runs on GNU/Linux and on Windows (MSYS2/MinGW) and requires 
+[Lua](http://www.lua.org/) (>=5.3).
+
+SOIL itself is not required because MoonSOIL includes its sources.
 
 _Authored by:_ _[Stefano Trettel](https://www.linkedin.com/in/stetre)_
 
@@ -18,6 +20,10 @@ MIT/X11 license (same as Lua). See [LICENSE](./LICENSE).
 #### Documentation, Getting and installing, etc.
 
 See the [Reference Manual](https://stetre.github.io/moonsoil/doc/index.html).
+
+#### Getting and installing
+
+See [INSTALL](./INSTALL.md).
 
 #### Examples
 
