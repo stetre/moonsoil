@@ -41,7 +41,7 @@ The script below loads an image from file.
 
 soil = require("moonsoil")
 
--- Load and image from a file. The image is returned as a binary string.
+-- Load an image from a file. The image is returned as a binary string.
 data, w, h, channels = soil.load_image("dice6.png", 'rgb')
 -- Check if an error occurred:
 assert(data, soil.last_result())

@@ -855,32 +855,31 @@ of the <a href="https://github.com/stetre/moonsoil">official repository</a> on G
 <div class="sect1">
 <h2 id="_functions">Functions</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>All the functions listed here are members of the <strong>soil</strong> table.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>soil.last_result</strong> ()<br>
-&#8594; <em>string</em></p>
+<p><em>string</em> = <strong>last_result</strong>( )</p>
 </li>
 <li>
-<p><strong>soil.channels</strong> (<a href="#channels"><em>channels</em></a>)<br>
-&#8594; <em>n</em><br>
+<p><em>n</em> = <strong>channels</strong>(<a href="#channels"><em>channels</em></a>)<br>
 <span class="small">Returns the number of channels corresponding to the given <em>channels</em> string.</span></p>
 </li>
 <li>
-<p><strong>soil.load_image</strong> (<em>filename</em>, <a href="#forcechannels"><em>forcechannels</em></a>)<br>
-&#8594; <a href="#data"><em>data</em></a>, <em>width</em>, <em>height</em>, <a href="#channels"><em>channels</em></a></p>
+<p><a href="#data"><em>data</em></a>, <em>width</em>, <em>height</em>, <a href="#channels"><em>channels</em></a> =
+<strong>load_image</strong>(<em>filename</em>, <a href="#forcechannels"><em>forcechannels</em></a>)</p>
 </li>
 <li>
-<p><strong>soil.load_image_from_memory</strong> (<a href="#buffer"><em>buffer</em></a>, <a href="#forcechannels"><em>forcechannels</em></a>)<br>
-&#8594; <a href="#data"><em>data</em></a>, <em>width</em>, <em>height</em>, <a href="#channels"><em>channels</em></a></p>
+<p><a href="#data"><em>data</em></a>, <em>width</em>, <em>height</em>, <a href="#channels"><em>channels</em></a> =
+<strong>load_image_from_memory</strong>(<a href="#buffer"><em>buffer</em></a>, <a href="#forcechannels"><em>forcechannels</em></a>)</p>
 </li>
 <li>
-<p><strong>soil.save_image</strong> (<em>filename</em>, <a href="#imagetype"><em>imagetype</em></a>, <em>width</em>, <em>height</em>, <a href="#channels"><em>channels</em></a>, <a href="#flags"><em>flags</em></a>)<br>
-&#8594; <em>boolean</em>, <em>errmsg</em></p>
+<p><em>boolean</em>, <em>errmsg</em> = <strong>save_image</strong>(<em>filename</em>, <a href="#imagetype"><em>imagetype</em></a>, <em>width</em>, <em>height</em>, <a href="#channels"><em>channels</em></a>, <a href="#flags"><em>flags</em></a>)</p>
 </li>
 <li>
-<p><strong>soil.save_screenshot</strong> (<em>filename</em>, <a href="#imagetype"><em>imagetype</em></a>, <em>x</em>, <em>y</em>, <em>width</em>, <em>height</em>)<br>
-&#8594; <em>boolean</em>, <em>errmsg</em></p>
+<p><em>boolean</em>, <em>errmsg</em> = <strong>save_screenshot</strong>(<em>filename</em>, <a href="#imagetype"><em>imagetype</em></a>, <em>x</em>, <em>y</em>, <em>width</em>, <em>height</em>)</p>
 </li>
 </ul>
 </div>
@@ -891,11 +890,10 @@ of the <a href="https://github.com/stetre/moonsoil">official repository</a> on G
 <div class="title">Note</div>
 </td>
 <td class="content">
-The following functions require OpenGL to be initialized.
-In order to do this from Lua you can use a windowing library such as
-<a href="https://github.com/stetre/moonglfw">MoonGLFW</a> to create a GL context, and
-<a href="https://github.com/stetre/moongl">MoonGL</a> to initialize it
-(see the examples for more details).
+The following functions require OpenGL. In order to use them,
+you can create a GL context using a windowing library such as
+<a href="https://github.com/stetre/moonglfw">MoonGLFW</a>, and initialize it with
+<a href="https://github.com/stetre/moongl">MoonGL</a> (see the examples for more details).
 </td>
 </tr>
 </table>
@@ -903,40 +901,31 @@ In order to do this from Lua you can use a windowing library such as
 <div class="ulist">
 <ul>
 <li>
-<p><strong>soil.load_texture</strong> (<em>filename</em>, <a href="#forcechannels"><em>forcechannels</em></a>, <a href="#texid"><em>texid</em></a>, <a href="#flags"><em>flags</em></a>)<br>
-&#8594; <em>texid</em></p>
+<p><em>texid</em> = <strong>load_texture</strong>(<em>filename</em>, <a href="#forcechannels"><em>forcechannels</em></a>, <a href="#texid"><em>texid</em></a>, <a href="#flags"><em>flags</em></a>)</p>
 </li>
 <li>
-<p><strong>soil.load_cubemap</strong> (<em>xposfilename</em>, <em>xnegfilename</em>, <em>yposfilename</em>, <em>ynegfilename</em>, <em>zposfilename</em>, <em>znegfilename</em>, <a href="#forcechannels"><em>forcechannels</em></a>, <a href="#texid"><em>texid</em></a>, <a href="#flags"><em>flags</em></a>)<br>
-&#8594; <em>texid</em></p>
+<p><em>texid</em> = <strong>load_cubemap</strong>(<em>xposfilename</em>, <em>xnegfilename</em>, <em>yposfilename</em>, <em>ynegfilename</em>, <em>zposfilename</em>, <em>znegfilename</em>, <a href="#forcechannels"><em>forcechannels</em></a>, <a href="#texid"><em>texid</em></a>, <a href="#flags"><em>flags</em></a>)</p>
 </li>
 <li>
-<p><strong>soil.load_single_cubemap</strong> (<em>filename</em>, <a href="#faceorder"><em>faceorder</em></a>, <a href="#forcechannels"><em>forcechannels</em></a>, <a href="#texid"><em>texid</em></a>, <a href="#flags"><em>flags</em></a>)<br>
-&#8594; <em>texid</em></p>
+<p><em>texid</em> = <strong>load_single_cubemap</strong>(<em>filename</em>, <a href="#faceorder"><em>faceorder</em></a>, <a href="#forcechannels"><em>forcechannels</em></a>, <a href="#texid"><em>texid</em></a>, <a href="#flags"><em>flags</em></a>)</p>
 </li>
 <li>
-<p><strong>soil.load_hdr_texture</strong> (<em>filename</em>, <a href="#fakehdr"><em>fakehdr</em></a>, <a href="#rescaletomax"><em>rescaletomax</em></a>, <a href="#texid"><em>texid</em></a>, <a href="#flags"><em>flags</em></a>)<br>
-&#8594; <em>texid</em></p>
+<p><em>texid</em> = <strong>load_hdr_texture</strong>(<em>filename</em>, <a href="#fakehdr"><em>fakehdr</em></a>, <a href="#rescaletomax"><em>rescaletomax</em></a>, <a href="#texid"><em>texid</em></a>, <a href="#flags"><em>flags</em></a>)</p>
 </li>
 <li>
-<p><strong>soil.load_texture_from_memory</strong> (<a href="#buffer"><em>buffer</em></a>, <a href="#forcechannels"><em>forcechannels</em></a>, <a href="#texid"><em>texid</em></a>, <a href="#flags"><em>flags</em></a>)<br>
-&#8594; <em>texid</em></p>
+<p><em>texid</em> = <strong>load_texture_from_memory</strong>(<a href="#buffer"><em>buffer</em></a>, <a href="#forcechannels"><em>forcechannels</em></a>, <a href="#texid"><em>texid</em></a>, <a href="#flags"><em>flags</em></a>)</p>
 </li>
 <li>
-<p><strong>soil.load_cubemap_from_memory</strong> (<a href="#buffer"><em>xposbuffer</em></a>, <a href="#buffer"><em>xnegbuffer</em></a>, <a href="#buffer"><em>yposbuffer</em></a>, <a href="#buffer"><em>ynegbuffer</em></a>, <a href="#buffer"><em>zposbuffer</em></a>, <a href="#buffer"><em>znegbuffer</em></a>, <a href="#forcechannels"><em>forcechannels</em></a>, <a href="#texid"><em>texid</em></a>, <a href="#flags"><em>flags</em></a>)<br>
-&#8594; <em>texid</em></p>
+<p><em>texid</em> = <strong>load_cubemap_from_memory</strong>(<a href="#buffer"><em>xposbuffer</em></a>, <a href="#buffer"><em>xnegbuffer</em></a>, <a href="#buffer"><em>yposbuffer</em></a>, <a href="#buffer"><em>ynegbuffer</em></a>, <a href="#buffer"><em>zposbuffer</em></a>, <a href="#buffer"><em>znegbuffer</em></a>, <a href="#forcechannels"><em>forcechannels</em></a>, <a href="#texid"><em>texid</em></a>, <a href="#flags"><em>flags</em></a>)</p>
 </li>
 <li>
-<p><strong>soil.load_single_cubemap_from_memory</strong> (<a href="#buffer"><em>buffer</em></a>, <a href="#faceorder"><em>faceorder</em></a>, <a href="#forcechannels"><em>forcechannels</em></a>, <a href="#texid"><em>texid</em></a>, <a href="#flags"><em>flags</em></a>)<br>
-&#8594; <em>texid</em></p>
+<p><em>texid</em> = <strong>load_single_cubemap_from_memory</strong>(<a href="#buffer"><em>buffer</em></a>, <a href="#faceorder"><em>faceorder</em></a>, <a href="#forcechannels"><em>forcechannels</em></a>, <a href="#texid"><em>texid</em></a>, <a href="#flags"><em>flags</em></a>)</p>
 </li>
 <li>
-<p><strong>soil.create_texture</strong> (<a href="#data"><em>data</em></a>, <em>width</em>, <em>height</em>, <a href="#channels"><em>channels</em></a>, <a href="#texid"><em>texid</em></a>, <a href="#flags"><em>flags</em></a>)<br>
-&#8594; <em>texid</em></p>
+<p><em>texid</em> = <strong>create_texture</strong>(<a href="#data"><em>data</em></a>, <em>width</em>, <em>height</em>, <a href="#channels"><em>channels</em></a>, <a href="#texid"><em>texid</em></a>, <a href="#flags"><em>flags</em></a>)</p>
 </li>
 <li>
-<p><strong>soil.create_single_cubemap</strong> (<a href="#data"><em>data</em></a>, <em>width</em>, <em>height</em>, <a href="#channels"><em>channels</em></a>, <a href="#faceorder"><em>faceorder</em></a>, <a href="#texid"><em>texid</em></a>, <a href="#flags"><em>flags</em></a>)<br>
-&#8594; <em>texid</em></p>
+<p><em>texid</em> = <strong>create_single_cubemap</strong>(<a href="#data"><em>data</em></a>, <em>width</em>, <em>height</em>, <a href="#channels"><em>channels</em></a>, <a href="#faceorder"><em>faceorder</em></a>, <a href="#texid"><em>texid</em></a>, <a href="#flags"><em>flags</em></a>)</p>
 </li>
 </ul>
 </div>
@@ -948,14 +937,14 @@ In order to do this from Lua you can use a windowing library such as
 <div id="buffer" class="ulist">
 <ul>
 <li>
-<p><strong>buffer</strong>, <strong>*posbuffer</strong>, <strong>*negbuffer</strong>: binary string.</p>
+<p><strong>buffer</strong>, <strong>xposbuffer</strong>, <strong>xnegbuffer</strong>, &#8230;&#8203;: binary string.</p>
 </li>
 </ul>
 </div>
 <div id="channels" class="ulist">
 <ul>
 <li>
-<p><strong>channels</strong>: '<em>luminous</em>', '<em>luminous/alpha</em>', '<em>rgb</em>', '<em>rgba</em>'.</p>
+<p><strong>channels</strong>: '<em>luminous</em>' (greyscale), '<em>luminous/alpha</em>', '<em>rgb</em>', '<em>rgba</em>'.</p>
 </li>
 </ul>
 </div>
