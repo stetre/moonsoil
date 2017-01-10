@@ -106,6 +106,9 @@ Other examples can be found in the **examples/** directory.
 * Image and model loading:
 [MoonAssimp](https://github.com/stetre/moonassimp).
 
+* Font rendering:
+[MoonFreeType](https://github.com/stetre/moonfreetype).
+
 * Audio:
 [LuaJACK](https://github.com/stetre/luajack).
 
