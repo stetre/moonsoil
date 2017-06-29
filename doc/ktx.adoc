@@ -11,8 +11,8 @@ _(Note that these are MoonSOIL additions, i.e. not bindings to SOIL.)_
 [small]#Loads a texture from a KTX file and returns its contents in a table. +
 This function raises a Lua error if an error occurs while parsing the file.#
 
-* _string_ = *ktf_tostring*(<<ktxtexture, _ktxtexture_>>) +
-[small]#Returns a printable string with the contents of the given _ktftexture_.#
+* _string_ = *ktx_tostring*(<<ktxtexture, _ktxtexture_>>) +
+[small]#Returns a printable string with the contents of the given _ktxtexture_.#
 
 '''
 
