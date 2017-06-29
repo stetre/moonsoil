@@ -372,6 +372,15 @@ function soil.load_ktx(filename)
    return t
 end
 
+function soil.ktx_data(t)
+   local data = {}
+   for _, lvl in ipairs(t.levels) do
+      data[#data+1] = lvl.data
+   end
+   return table.concat(data)
+end
+
+
 function soil.ktx_tostring(t)
    local s = {}
    table.insert(s, "filename: ".. t.filename)

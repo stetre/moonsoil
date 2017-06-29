@@ -983,6 +983,11 @@ Values: '<em>power of two</em>', '<em>mipmaps</em>', '<em>texture repeats</em>',
 This function raises a Lua error if an error occurs while parsing the file.</span></p>
 </li>
 <li>
+<p><em>data</em> = <strong>ktx_data</strong>(<a href="#ktxtexture"><em>ktxtexture</em></a>)<br>
+<span class="small">Returns a binary string obtained by concatenating the <em>data</em> fields of all
+the <em>levels</em> in the given <em>ktxtexture</em> (i.e., the whole texture data, padding included).</span></p>
+</li>
+<li>
 <p><em>string</em> = <strong>ktx_tostring</strong>(<a href="#ktxtexture"><em>ktxtexture</em></a>)<br>
 <span class="small">Returns a printable string with the contents of the given <em>ktxtexture</em>.</span></p>
 </li>
