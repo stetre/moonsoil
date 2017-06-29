@@ -1,0 +1,66 @@
+
+== KTX functions
+
+
+This section describes MoonSOIL additions to handle textures in the 
+https://www.khronos.org/opengles/sdk/tools/KTX/[KTX File Format]. 
+
+_(Note that these are MoonSOIL additions, i.e. not bindings to SOIL.)_
+
+* <<ktxtexture, _ktxtexture_>> = *load_ktx*(_filename_) +
+[small]#Loads a texture from a KTX file and returns its contents in a table. +
+This function raises a Lua error if an error occurs while parsing the file.#
+
+* _string_ = *ktf_tostring*(<<ktxtexture, _ktxtexture_>>) +
+[small]#Returns a printable string with the contents of the given _ktftexture_.#
+
+'''
+
+[[ktxtexture]]
+[small]#*ktxtexture* = { +
+_filename_: string, +
+_little_endian_: boolean, +
+_texture_type_: <<texturetype, texturetype>>, +
+_gl_type_: <<gltype, gltype>>, +
+_gl_format_: <<glformat, glformat>>, +
+_gl_internal_format_: <<glinternalformat, glinternalformat>>, +
+_gl_base_internal_format_: <<glformat, glformat>>, +
+_array_elements_: integer, +
+_faces_: integer, +
+_mipmap_levels_: integer, +
+_key_value_data_: binary string, +
+_levels_: {<<mipmaplevel, mipmaplevel>>}, +
+} (rfr: https://www.khronos.org/opengles/sdk/tools/KTX/file_format_spec/[KTF File Format Specification])#
+
+[[mipmaplevel]]
+[small]#*mipmaplevel* = { +
+_width_: integer, +
+_height_: integer, +
+_depth_: integer, +
+_size_: integer, +
+_mip_padding_: integer, +
+_face_size_: integer ('_cube map_' only), +
+_cube_padding_: integer ('_cube map_' only), +
+_data_: binary string (see note below), +
+} +
+Note: for '_cube map_' textures, _data_ contains _6*(face_size*cube_padding)_ bytes, and the
+_size_ and _mip_padding_ fields are _nil_; +
+for all other texture types, _data_ contains _size*mip_padding_ bytes.#
+
+[[texturetype]]
+[small]#*texturetype*: string literal +
+Values: '_1d_', '_1d array_', '_2d_', '_2d array_', '_3d_', '_cube map_', '_cube map array_'.#
+
+
+[[gltype]]
+[small]#*gltype*: string literal +
+Values:@@TODO.#
+
+[[glformat]]
+[small]#*glformat*: string literal +
+Values:@@TODO.#
+
+[[glinternalformat]]
+[small]#*glinternalformat*: string literal +
+Values:@@TODO.#
+

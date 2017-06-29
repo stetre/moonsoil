@@ -73,6 +73,11 @@ int luaopen_moonsoil(lua_State *L)
     luaL_setfuncs(L, Functions, 0);
     moonsoil_open_soil(L);
 
+    /* Add functions implemented in Lua */
+    lua_pushvalue(L, -1); lua_setglobal(L, "moonsoil");
+    if(luaL_dostring(L, "require('moonsoil.ktx')") != 0) lua_error(L);
+    lua_pushnil(L);  lua_setglobal(L, "moonsoil");
+
     return 1;
     }
 

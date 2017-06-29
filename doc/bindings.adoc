@@ -1,5 +1,5 @@
 
-== Functions
+== SOIL bindings
 
 All the functions listed here are members of the *soil* table.
 
@@ -43,39 +43,39 @@ https://github.com/stetre/moongl[MoonGL] (see the examples for more details).
 * _texid_ = *create_single_cubemap*(<<data, _data_>>, _width_, _height_, <<channels,_channels_>>, <<faceorder,_faceorder_>>, <<texid, _texid_>>, <<flags,_flags_>>)
 
 
-== Arguments
+'''
 
 [[buffer]]
-* *buffer*, *xposbuffer*, *xnegbuffer*, ...: binary string.
+[small]#*buffer*, *xposbuffer*, *xnegbuffer*, ...: binary string.#
 
 [[channels]]
-* *channels*: '_luminous_' (greyscale), '_luminous/alpha_', '_rgb_', '_rgba_'.
+[small]#*channels*: '_luminous_' (greyscale), '_luminous/alpha_', '_rgb_', '_rgba_'.#
 
 [[data]]
-* *data*: binary string.
+[small]#*data*: binary string.#
 
 [[faceorder]]
-* *faceorder*: a permutation of the string 'ESWNUD' (East, South, West, North, Up, Down).
+[small]#*faceorder*: a permutation of the string 'ESWNUD' (East, South, West, North, Up, Down).#
 
 [[fakehdr]]
-* *fakehdr*: '_rgbe_', '_rgbdiva_', '_rgbdiva2_'.
+[small]#*fakehdr*: '_rgbe_', '_rgbdiva_', '_rgbdiva2_'.#
 
 [[flags]]
-* *flags*: a bitfield. May be passed either as an integer code obtained by combining 
-soil.FLAG_XXX values (corresponding to SOIL_FLAG_XXX defines) or as a sequence of strings
+[small]#*flags*: a bitfield. May be passed either as an integer code obtained by combining
+soil.FLAG_XXX values (corresponding to SOIL_FLAG_XXX defines) or as a sequence of literals 
 from the set listed below. +
-[small]#String values: '_power of two_', '_mipmaps_', '_texture repeats_', '_multiply alpha_', '_invert y_', '_compress to dxt_', '_dds load direct_', '_ntsc safe rgb_', '_ycocg_', '_texture rectangle_'.#
+Values: '_power of two_', '_mipmaps_', '_texture repeats_', '_multiply alpha_', '_invert y_', '_compress to dxt_', '_dds load direct_', '_ntsc safe rgb_', '_ycocg_', '_texture rectangle_'.#
 
 [[forcechannels]]
-* *forcechannels*: '_auto_', or one of <<channels, _channels_>>.
+[small]#*forcechannels*: '_auto_', or one of <<channels, _channels_>>.#
 
 [[imagetype]]
-* *imagetype*: '_tga_', '_bmp_', '_dds_'.
+[small]#*imagetype*: '_tga_', '_bmp_', '_dds_'.#
 
 [[rescaletomax]]
-* *rescaletomax*: boolean.
+[small]#*rescaletomax*: boolean.#
 
 [[texid]]
-* *texid* id of OpenGL texture to reuse (=0 or _nil_ to create a new texture).
+[small]#*texid* id of OpenGL texture to reuse (=0 or _nil_ to create a new texture).#
 
 

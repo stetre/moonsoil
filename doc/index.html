@@ -776,8 +776,8 @@ p.tableblock.header { color: #6d6e71; }
 <li><a href="#_license">License</a></li>
 </ul>
 </li>
-<li><a href="#_functions">Functions</a></li>
-<li><a href="#_arguments">Arguments</a></li>
+<li><a href="#_soil_bindings">SOIL bindings</a></li>
+<li><a href="#_ktx_functions">KTX functions</a></li>
 </ul>
 </div>
 </div>
@@ -853,7 +853,7 @@ of the <a href="https://github.com/stetre/moonsoil">official repository</a> on G
 </div>
 </div>
 <div class="sect1">
-<h2 id="_functions">Functions</h2>
+<h2 id="_soil_bindings">SOIL bindings</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>All the functions listed here are members of the <strong>soil</strong> table.</p>
@@ -929,83 +929,112 @@ you can create a GL context using a windowing library such as
 </li>
 </ul>
 </div>
+<hr>
+<div id="buffer" class="paragraph">
+<p><span class="small"><strong>buffer</strong>, <strong>xposbuffer</strong>, <strong>xnegbuffer</strong>, &#8230;&#8203;: binary string.</span></p>
+</div>
+<div id="channels" class="paragraph">
+<p><span class="small"><strong>channels</strong>: '<em>luminous</em>' (greyscale), '<em>luminous/alpha</em>', '<em>rgb</em>', '<em>rgba</em>'.</span></p>
+</div>
+<div id="data" class="paragraph">
+<p><span class="small"><strong>data</strong>: binary string.</span></p>
+</div>
+<div id="faceorder" class="paragraph">
+<p><span class="small"><strong>faceorder</strong>: a permutation of the string 'ESWNUD' (East, South, West, North, Up, Down).</span></p>
+</div>
+<div id="fakehdr" class="paragraph">
+<p><span class="small"><strong>fakehdr</strong>: '<em>rgbe</em>', '<em>rgbdiva</em>', '<em>rgbdiva2</em>'.</span></p>
+</div>
+<div id="flags" class="paragraph">
+<p><span class="small"><strong>flags</strong>: a bitfield. May be passed either as an integer code obtained by combining
+soil.FLAG_XXX values (corresponding to SOIL_FLAG_XXX defines) or as a sequence of literals
+from the set listed below.<br>
+Values: '<em>power of two</em>', '<em>mipmaps</em>', '<em>texture repeats</em>', '<em>multiply alpha</em>', '<em>invert y</em>', '<em>compress to dxt</em>', '<em>dds load direct</em>', '<em>ntsc safe rgb</em>', '<em>ycocg</em>', '<em>texture rectangle</em>'.</span></p>
+</div>
+<div id="forcechannels" class="paragraph">
+<p><span class="small"><strong>forcechannels</strong>: '<em>auto</em>', or one of <a href="#channels"><em>channels</em></a>.</span></p>
+</div>
+<div id="imagetype" class="paragraph">
+<p><span class="small"><strong>imagetype</strong>: '<em>tga</em>', '<em>bmp</em>', '<em>dds</em>'.</span></p>
+</div>
+<div id="rescaletomax" class="paragraph">
+<p><span class="small"><strong>rescaletomax</strong>: boolean.</span></p>
+</div>
+<div id="texid" class="paragraph">
+<p><span class="small"><strong>texid</strong> id of OpenGL texture to reuse (=0 or <em>nil</em> to create a new texture).</span></p>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_arguments">Arguments</h2>
+<h2 id="_ktx_functions">KTX functions</h2>
 <div class="sectionbody">
-<div id="buffer" class="ulist">
+<div class="paragraph">
+<p>This section describes MoonSOIL additions to handle textures in the
+<a href="https://www.khronos.org/opengles/sdk/tools/KTX/">KTX File Format</a>.</p>
+</div>
+<div class="paragraph">
+<p><em>(Note that these are MoonSOIL additions, i.e. not bindings to SOIL.)</em></p>
+</div>
+<div class="ulist">
 <ul>
 <li>
-<p><strong>buffer</strong>, <strong>xposbuffer</strong>, <strong>xnegbuffer</strong>, &#8230;&#8203;: binary string.</p>
+<p><a href="#ktxtexture"><em>ktxtexture</em></a> = <strong>load_ktx</strong>(<em>filename</em>)<br>
+<span class="small">Loads a texture from a KTX file and returns its contents in a table.<br>
+This function raises a Lua error if an error occurs while parsing the file.</span></p>
+</li>
+<li>
+<p><em>string</em> = <strong>ktf_tostring</strong>(<a href="#ktxtexture"><em>ktxtexture</em></a>)<br>
+<span class="small">Returns a printable string with the contents of the given <em>ktftexture</em>.</span></p>
 </li>
 </ul>
 </div>
-<div id="channels" class="ulist">
-<ul>
-<li>
-<p><strong>channels</strong>: '<em>luminous</em>' (greyscale), '<em>luminous/alpha</em>', '<em>rgb</em>', '<em>rgba</em>'.</p>
-</li>
-</ul>
+<hr>
+<div id="ktxtexture" class="paragraph">
+<p><span class="small"><strong>ktxtexture</strong> = {<br>
+<em>filename</em>: string,<br>
+<em>little_endian</em>: boolean,<br>
+<em>texture_type</em>: <a href="#texturetype">texturetype</a>,<br>
+<em>gl_type</em>: <a href="#gltype">gltype</a>,<br>
+<em>gl_format</em>: <a href="#glformat">glformat</a>,<br>
+<em>gl_internal_format</em>: <a href="#glinternalformat">glinternalformat</a>,<br>
+<em>gl_base_internal_format</em>: <a href="#glformat">glformat</a>,<br>
+<em>array_elements</em>: integer,<br>
+<em>faces</em>: integer,<br>
+<em>mipmap_levels</em>: integer,<br>
+<em>key_value_data</em>: binary string,<br>
+<em>levels</em>: {<a href="#mipmaplevel">mipmaplevel</a>},<br>
+} (rfr: <a href="https://www.khronos.org/opengles/sdk/tools/KTX/file_format_spec/">KTF File Format Specification</a>)</span></p>
 </div>
-<div id="data" class="ulist">
-<ul>
-<li>
-<p><strong>data</strong>: binary string.</p>
-</li>
-</ul>
+<div id="mipmaplevel" class="paragraph">
+<p><span class="small"><strong>mipmaplevel</strong> = {<br>
+<em>width</em>: integer,<br>
+<em>height</em>: integer,<br>
+<em>depth</em>: integer,<br>
+<em>size</em>: integer,<br>
+<em>mip_padding</em>: integer,<br>
+<em>face_size</em>: integer ('<em>cube map</em>' only),<br>
+<em>cube_padding</em>: integer ('<em>cube map</em>' only),<br>
+<em>data</em>: binary string (see note below),<br>
+}<br>
+Note: for '<em>cube map</em>' textures, <em>data</em> contains <em>6*(face_size*cube_padding)</em> bytes, and the
+<em>size</em> and <em>mip_padding</em> fields are <em>nil</em>;<br>
+for all other texture types, <em>data</em> contains <em>size*mip_padding</em> bytes.</span></p>
 </div>
-<div id="faceorder" class="ulist">
-<ul>
-<li>
-<p><strong>faceorder</strong>: a permutation of the string 'ESWNUD' (East, South, West, North, Up, Down).</p>
-</li>
-</ul>
+<div id="texturetype" class="paragraph">
+<p><span class="small"><strong>texturetype</strong>: string literal<br>
+Values: '<em>1d</em>', '<em>1d array</em>', '<em>2d</em>', '<em>2d array</em>', '<em>3d</em>', '<em>cube map</em>', '<em>cube map array</em>'.</span></p>
 </div>
-<div id="fakehdr" class="ulist">
-<ul>
-<li>
-<p><strong>fakehdr</strong>: '<em>rgbe</em>', '<em>rgbdiva</em>', '<em>rgbdiva2</em>'.</p>
-</li>
-</ul>
+<div id="gltype" class="paragraph">
+<p><span class="small"><strong>gltype</strong>: string literal<br>
+Values:@@TODO.</span></p>
 </div>
-<div id="flags" class="ulist">
-<ul>
-<li>
-<p><strong>flags</strong>: a bitfield. May be passed either as an integer code obtained by combining
-soil.FLAG_XXX values (corresponding to SOIL_FLAG_XXX defines) or as a sequence of strings
-from the set listed below.<br>
-<span class="small">String values: '<em>power of two</em>', '<em>mipmaps</em>', '<em>texture repeats</em>', '<em>multiply alpha</em>', '<em>invert y</em>', '<em>compress to dxt</em>', '<em>dds load direct</em>', '<em>ntsc safe rgb</em>', '<em>ycocg</em>', '<em>texture rectangle</em>'.</span></p>
-</li>
-</ul>
+<div id="glformat" class="paragraph">
+<p><span class="small"><strong>glformat</strong>: string literal<br>
+Values:@@TODO.</span></p>
 </div>
-<div id="forcechannels" class="ulist">
-<ul>
-<li>
-<p><strong>forcechannels</strong>: '<em>auto</em>', or one of <a href="#channels"><em>channels</em></a>.</p>
-</li>
-</ul>
-</div>
-<div id="imagetype" class="ulist">
-<ul>
-<li>
-<p><strong>imagetype</strong>: '<em>tga</em>', '<em>bmp</em>', '<em>dds</em>'.</p>
-</li>
-</ul>
-</div>
-<div id="rescaletomax" class="ulist">
-<ul>
-<li>
-<p><strong>rescaletomax</strong>: boolean.</p>
-</li>
-</ul>
-</div>
-<div id="texid" class="ulist">
-<ul>
-<li>
-<p><strong>texid</strong> id of OpenGL texture to reuse (=0 or <em>nil</em> to create a new texture).</p>
-</li>
-</ul>
+<div id="glinternalformat" class="paragraph">
+<p><span class="small"><strong>glinternalformat</strong>: string literal<br>
+Values:@@TODO.</span></p>
 </div>
 </div>
 </div>
@@ -1019,7 +1048,7 @@ from the set listed below.<br>
 <div id="footer">
 <div id="footer-text">
 Version 0.5<br>
-Last updated 2016-12-21 10:38:03 CET
+Last updated 2017-06-29 08:48:49 CEST
 </div>
 </div>
 </body>
