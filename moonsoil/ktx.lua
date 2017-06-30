@@ -352,13 +352,13 @@ function soil.load_ktx(filename)
       end
 
       if t.texture_type == 'cube map' then
-         lvl.face_size = size
-         lvl.cube_padding = padding
+         lvl.size = size
+         lvl.padding = padding
          lvl.data = f:read((size+padding)*6)
          assert(lvl.data, MALFORMATTED)
       else
          lvl.size = size
-         lvl.mip_padding = padding
+         lvl.padding = padding
          lvl.data = f:read(size+padding)
          assert(lvl.data, MALFORMATTED)
       end
@@ -403,13 +403,13 @@ function soil.ktx_tostring(t)
    for i, lvl in ipairs(t.levels) do
       local ss = "level["..i.."] ("..lvl.width.." x "..lvl.height .." x "..lvl.depth..")"
       if t.texture_type == 'cube map' then
-            ss = ss..", face_size: "..lvl.face_size..", cube_padding: "..lvl.cube_padding
+            ss = ss..", size: "..lvl.size..", padding: "..lvl.padding
                .. ", #data: "..#lvl.data
-         assert(#lvl.data == 6*(lvl.face_size + lvl.cube_padding))
+         assert(#lvl.data == 6*(lvl.size + lvl.padding))
       else
-            ss = ss..", size: "..lvl.size .. ", mip_padding: "..lvl.mip_padding
+            ss = ss..", size: "..lvl.size .. ", padding: "..lvl.padding
                ..", #data: "..#lvl.data
-         assert(#lvl.data == lvl.size + lvl.mip_padding)
+         assert(#lvl.data == lvl.size + lvl.padding)
       end
       table.insert(s, ss)
    end

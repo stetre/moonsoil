@@ -1015,15 +1015,15 @@ the <em>levels</em> in the given <em>ktxtexture</em> (i.e., the whole texture da
 <em>width</em>: integer,<br>
 <em>height</em>: integer,<br>
 <em>depth</em>: integer,<br>
-<em>size</em>: integer,<br>
-<em>mip_padding</em>: integer,<br>
-<em>face_size</em>: integer ('<em>cube map</em>' only),<br>
-<em>cube_padding</em>: integer ('<em>cube map</em>' only),<br>
+<em>size</em>: integer (image size or face size, see note below),<br>
+<em>padding</em>: integer (mip padding or cube padding, see note below),<br>
 <em>data</em>: binary string (see note below),<br>
 }<br>
-Note: for '<em>cube map</em>' textures, <em>data</em> contains <em>6*(face_size*cube_padding)</em> bytes, and the
-<em>size</em> and <em>mip_padding</em> fields are <em>nil</em>;<br>
-for all other texture types, <em>data</em> contains <em>size*mip_padding</em> bytes.</span></p>
+Note: the meaning of the <em>size</em> and <em>padding</em> fields and the composition of the <em>data</em> field
+depend on the <em>texture_type</em> this <em>mipmap_level</em> belongs to. In particular:<br>
+- if <em>texture_type</em> is '<em>cube map</em>', then <em>size</em> and <em>padding</em> refer to a single face, and <em>data</em> contains <em>6*(size + padding)</em> bytes concatenating the data for the 6 faces, in order from the first to the sixth;<br>
+- for all other texture types, <em>data</em> contains <em>size + padding</em> bytes, and is composed of the image of this level followed by the mip padding;<br>
+- for array textures (including '<em>cube map array</em>'), the level image is the concatenation of the images for all the array elements, each composed of <em>size/array_elements</em> bytes.</span></p>
 </div>
 <div id="texturetype" class="paragraph">
 <p><span class="small"><strong>texturetype</strong>: string literal<br>

@@ -41,15 +41,15 @@ _levels_: {<<mipmaplevel, mipmaplevel>>}, +
 _width_: integer, +
 _height_: integer, +
 _depth_: integer, +
-_size_: integer, +
-_mip_padding_: integer, +
-_face_size_: integer ('_cube map_' only), +
-_cube_padding_: integer ('_cube map_' only), +
+_size_: integer (image size or face size, see note below), +
+_padding_: integer (mip padding or cube padding, see note below), +
 _data_: binary string (see note below), +
 } +
-Note: for '_cube map_' textures, _data_ contains _6*(face_size*cube_padding)_ bytes, and the
-_size_ and _mip_padding_ fields are _nil_; +
-for all other texture types, _data_ contains _size*mip_padding_ bytes.#
+Note: the meaning of the _size_ and _padding_ fields and the composition of the _data_ field
+depend on the _texture_type_ this _mipmap_level_ belongs to. In particular: +
+pass:[-] if _texture_type_ is '_cube map_', then _size_ and _padding_ refer to a single face, and _data_ contains _6*(size + padding)_ bytes concatenating the data for the 6 faces, in order from the first to the sixth; +
+pass:[-] for all other texture types, _data_ contains _size + padding_ bytes, and is composed of the image of this level followed by the mip padding; +
+pass:[-] for array textures (including '_cube map array_'), the level image is the concatenation of the images for all the array elements, each composed of _size/array_elements_ bytes.#
 
 [[texturetype]]
 [small]#*texturetype*: string literal +
