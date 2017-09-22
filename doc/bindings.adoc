@@ -14,7 +14,7 @@ All the functions listed here are members of the *soil* table.
 * <<data, _data_>>, _width_, _height_, <<channels,_channels_>> = 
 *load_image_from_memory*(<<buffer,_buffer_>>, <<forcechannels,_forcechannels_>>)
 
-* _boolean_, _errmsg_ = *save_image*(_filename_, <<imagetype,_imagetype_>>, _width_, _height_, <<channels,_channels_>>, <<flags,_flags_>>)
+* _boolean_, _errmsg_ = *save_image*(_filename_, <<imagetype,_imagetype_>>, _width_, _height_, <<channels,_channels_>>, <<data, _data_>>)
 
 * _boolean_, _errmsg_ = *save_screenshot*(_filename_, <<imagetype,_imagetype_>>, _x_, _y_, _width_, _height_)
 
