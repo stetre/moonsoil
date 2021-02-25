@@ -1,5 +1,11 @@
 ## MoonSOIL: Lua bindings for SOIL
 
+_*** This project is discontinued, superseded by
+[MoonImage](https://github.com/stetre/moonimage). ***_
+
+---
+
+
 MoonSOIL is a Lua binding library for
 the 
 [Simple OpenGL Image Library (SOIL)](http://www.lonesock.net/soil.html).
